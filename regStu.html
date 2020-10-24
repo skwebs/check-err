@@ -41,6 +41,7 @@
 	<!-- all css vendors file-->
 	<link rel="stylesheet" href="https://cfcoaching.000webhostapp.com/assets/vendors/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="https://cfcoaching.000webhostapp.com/assets/vendors/bootstrap/5.0.0-alpha2/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cfcoaching.000webhostapp.com/assets/vendors/bootstrap/5.0.0-alpha2/bs5a2-reset.css" />
 	<link rel="stylesheet" href="https://cfcoaching.000webhostapp.com/assets/vendors/cropper/1.5.9/cropper.min.css" />
 	<link rel="stylesheet" href="https://cfcoaching.000webhostapp.com/assets/vendors/jquery-ui/1.12.1/jquery-ui.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.6.1/sweetalert2.min.css" integrity="sha512-+pGmJ3i6OuNjIlRy/REXeyodbWbqEAkHNCCeabR4Jsm46v6eGh4tlWb2h3TKpXQXZgsK1I9HwNYA3dbohQHkJA==" crossorigin="anonymous" />
@@ -104,16 +105,16 @@
 		.cta {
 			background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), 50%), url("https://anshumemorial.in/test/m/assets/img/web/laptop1.jpg") fixed center 100%/cover
 		}
-		.bg-grad-b{
-		background: linear-gradient(119.54deg, #000046 0%, #1CB5E0 100%); 
-		background: -webkit-linear-gradient(119.54deg, #1CB5E0, #000046);
-		} 
-		.btn.btn-primary:hover, 
-		.btn.btn-primary:focus{
-		background: linear-gradient(119.54deg, #000046 10%, #1CB5E0 60%); 
-		background: -webkit-linear-gradient(119.54deg, #1CB5E0, #000046);
-		}
-		
+	.btn.btn-primary{
+	background: linear-gradient(119.54deg, #000046 0%, #1CB5E0 100%);
+	background: -webkit-linear-gradient(119.54deg, #1CB5E0, #000046);
+	}
+	.btn.btn-primary:hover, 
+	.btn.btn-primary:active, 
+	.btn.btn-primary:focus{
+	background: linear-gradient(119.54deg, #000046 10%, #1CB5E0 60%);
+	background: -webkit-linear gradient(119.54deg, #1CB5E0, #000046);
+	}
 		
 		/* SIDEBAR CSS */
 		
@@ -358,6 +359,46 @@
 		}
 		td{white-space:nowrap;}
 		.small-txt, .user_text table td{font-size:.75rem;}
+		
+		
+		
+		.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+		border-color: #198754;
+		box-shadow: 0 0 .5rem 0.25rem rgba(25, 135, 84, 0.25);
+		}
+		.form-control:focus {
+		outline: var(--bs-primary);
+		box-shadow: 0 0 .5rem .05rem rgba(13, 110, 253, 0.25);
+		}
+		
+		.form-control:focus {
+		outline: var(--bs-primary);
+		box-shadow: 0 0 .5rem .05rem rgba(13, 110, 253, 0.25);
+		}
+		
+		.btn-check:focus + .btn, 
+		.btn:focus,
+		.btn:active,
+		.btn:hover {
+		outline: 0;
+		box-shadow: 0 0 .5rem 0.125rem rgba(13, 110, 253, 0.25);
+		}
+		
+		.was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+		border-color: #198754;
+		box-shadow: 0 0 .5rem 0.25rem rgba(25, 135, 84, 0.25);
+		}
+		.was-validated .form-select:valid:focus, .form-select.is-valid:focus {
+		border-color: #198754;
+		box-shadow: 0 0 0.5rem 0.25rem rgba(25, 135, 84, 0.25);
+		}
+		.was-validated .form-check-input:valid:focus, .form-check-input.is-valid:focus {
+		box-shadow: 0 0 0.5rem 0.25rem rgba(25, 135, 84, 0.25);
+		}
+		.was-validated .form-file-input:valid:focus ~ .form-file-label, .form-file-input.is-valid:focus ~ .form-file-label {
+		border-color: #198754;
+		box-shadow: 0 0 0.5rem 0.25rem rgba(25, 135, 84, 0.25);
+		}
 		
 	</style>
 </head>
@@ -797,11 +838,6 @@ pattern="^([A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\s|.|)[A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\
 				e.preventDefault();
 				$("#regForm .form-control, #regForm .form-select").each(function(){
 					var _this = $(this);
-					/*if(_this.prop("required")){
-					   _this.focus();
-					   Swal.fire("Warning",_this.data('title'));
-					}*/
-					
 					
 					if(!(new RegExp(_this.attr("pattern")).test(_this.val()))){
 						// if input is invalid then focus on field
@@ -836,28 +872,9 @@ pattern="^([A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\s|.|)[A-Z][a-z]{2,}|[A-Z][a-z]*(\s|.\
 				}
 			});
 			
-			/*var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-				return new bootstrap.Tooltip(tooltipTriggerEl, {
-					container: 'body',
-					boundary: 'window',
-					placement: "top"
-				});
-			});
-			*/
+			$('[data-toggle="tooltip"]').tooltip();
 			
 			})
-		</script>
-		<script type="text/javascript">
-		$(function () {
-		/*var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-		return new bootstrap.Tooltip(tooltipTriggerEl);
-		});
-		*/
-		
-		$('[data-toggle="tooltip"]').tooltip();
-		})
 		</script>
 	</body>
 </html>
